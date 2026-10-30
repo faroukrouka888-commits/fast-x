@@ -101,21 +101,35 @@ let ST=null,MN=null,ENDED=false,C={},SENT=[],TAB='all';
 const p2=n=>String(n).padStart(2,'0'),hms=s=>{s=Math.max(0,Math.floor(s));return p2(s/3600|0)+':'+p2(s/60%60|0)+':'+p2(s%60)};
 function say(t){$('#mt').innerHTML=t;$('#msg').style.display='flex'}
 function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2600)}
+const CUR=()=>MN?MN.cur:(ST&&ST.cur)||'',SHOP=()=>MN?MN.shop:(ST&&ST.shop)||'';
+let MP={},MT=0;const DBG={ok:0,err:''};
+/* the menu can be bigger than ntfy's 4096-byte message limit, so the cashier sends it in parts; we glue the newest complete set together */
+function menuPart(o,t){
+ if(o.n==null){if(t>=MT){MN=o;MT=t}return}
+ const e=MP[o.v]||(MP[o.v]={n:o.n,p:{},t:0,shop:o.shop,cur:o.cur});e.p[o.i]=o.items;e.t=Math.max(e.t,t);
+ if(Object.keys(e.p).length==e.n&&e.t>=MT){let it=[];for(let i=0;i<e.n;i++)it=it.concat(e.p[i]||[]);MN={type:'menu',shop:e.shop,cur:e.cur,items:it};MT=e.t}}
+const dbg=()=>{const pr=Object.values(MP).map(e=>Object.keys(e.p).length+'/'+e.n).join(' ');return 'الاتصال: '+(DBG.ok?'✓':(DBG.err||'…'))+' | الجلسة: '+(ST?'✓':'✗')+' | المنيو: '+(MN?'✓':(pr||'✗'))};
 if(!K)say('الرابط غير صحيح.<br><small class="mu">امسح الـ QR من الإيصال تاني</small>');
 else{say('جاري التحميل...');
- const got=m=>{try{if(m.event!='message')return;const o=JSON.parse(m.message);
-  if(o.type=='state'){ST=o;ST._at=(m.time||Date.now()/1000)*1000;ENDED=false;SENT=SENT.filter(s=>s.t>ST._at)}
-  else if(o.type=='menu')MN=o;else if(o.type=='ended')ENDED=true;else return;refresh()}catch(e){}};
- try{const es=new EventSource('https://ntfy.sh/'+K+'/sse?since=12h');es.onmessage=ev=>{try{got(JSON.parse(ev.data))}catch(e){}}}catch(e){}
- /* fallback: some networks block the live stream, so also poll every few seconds until data arrives */
- const poll=async()=>{if(ST&&MN)return;try{const r=await fetch('https://ntfy.sh/'+K+'/json?poll=1&since=12h');const t=await r.text();t.split('\n').forEach(l=>{if(l.trim())try{got(JSON.parse(l))}catch(e){}})}catch(e){}};
+ const t0=Date.now(),FF={};
+ const got=m=>{try{if(m.event!='message')return;DBG.ok=1;
+  /* ntfy turns any message over 4096 bytes into a file: download it and read it as the message */
+  if(m.attachment&&m.attachment.url&&!/^\s*[\[{]/.test(String(m.message))){const u=m.attachment.url;if(!FF[u]){FF[u]=1;fetch(u).then(r=>r.text()).then(tx=>got({event:'message',time:m.time,message:tx})).catch(()=>{delete FF[u]})}return}
+  const o=JSON.parse(m.message),t=(m.time||Date.now()/1000)*1000;
+  if(o.type=='state'){if(ST&&t<ST._at)return;ST=o;ST._at=t;ENDED=false;SENT=SENT.filter(s=>s.t>ST._at)}
+  else if(o.type=='menu')menuPart(o,t);else if(o.type=='ended')ENDED=true;else return;refresh()}catch(e){}};
+ try{const es=new EventSource('https://ntfy.sh/'+K+'/sse?since=12h');es.onopen=()=>{DBG.ok=1};es.onmessage=ev=>{try{got(JSON.parse(ev.data))}catch(e){}}}catch(e){}
+ /* fallback: some networks block the live stream, so also poll every few seconds until everything arrived */
+ const poll=async()=>{if(ST&&MN)return;try{const r=await fetch('https://ntfy.sh/'+K+'/json?poll=1&since=12h');const t=await r.text();DBG.ok=1;t.split('\n').forEach(l=>{if(l.trim())try{got(JSON.parse(l))}catch(e){}})}catch(e){if(!DBG.ok)DBG.err='مفيش اتصال بالنت أو ntfy.sh محجوب'}};
  poll();const pt=setInterval(()=>{if(ST&&MN)clearInterval(pt);else poll()},4000);
- setTimeout(()=>{if(!(ST&&MN))say('لسه مفيش بيانات للجلسة دي.<br><small class="mu">اتأكد إن النت شغال، وإن الجلسة لسه مفتوحة، أو اطلب من الكاشير يعيد تشغيل البرنامج</small>')},15000)}
+ const ui=setInterval(()=>{if(ST||ENDED){clearInterval(ui);return}const s=(Date.now()-t0)/1000;
+  if(s>20)say('لسه مفيش بيانات للجلسة دي.<br><small class="mu">اتأكد إن النت شغال، وإن الجلسة لسه مفتوحة، أو اطلب من الكاشير يعيد تشغيل البرنامج</small><br><small class="mu" style="direction:ltr;display:inline-block">'+dbg()+'</small>');
+  else if(s>6)say('جاري التحميل...<br><small class="mu">'+dbg()+'</small>')},2000)}
 function elapsed(){if(!ST)return 0;return(ST.acc+(ST.start?Math.max(0,Date.now()-ST._at)+(ST._at-ST.start):0))/60000}
 function tAmt(m){const k=ST.k,r=ST.r;if(ST.pre){const o=m-ST.pre;return o>0?r2(Math.ceil(o/k)*k/60*r):0}
  if(!(m>0))return 0;const sg=ST.sg||[],sm=sg.reduce((a,x)=>a+x.m,0),B=Math.max(ST.m,Math.ceil(m/k)*k);
  return r2(sg.reduce((a,x)=>a+x.m/60*x.r,0)+Math.max(0,B-sm)/60*r)}
-function tick(){if(!ST)return;const m=elapsed(),s=Math.floor(m*60),cur=MN?MN.cur:'';
+function tick(){if(!ST)return;const m=elapsed(),s=Math.floor(m*60),cur=CUR();
  $('#clk').textContent=hms(s);
  const run=!!ST.start;$('#stt').className='chip '+(run?'on':'off');$('#stx').textContent=run?'الجلسة شغّالة':'الجلسة متوقفة مؤقتاً';
  $('#rate').textContent=ST.r?'سعر الساعة: '+ST.r+' '+cur:'';
@@ -130,14 +144,14 @@ function tick(){if(!ST)return;const m=elapsed(),s=Math.floor(m*60),cur=MN?MN.cur
 setInterval(tick,1000);
 function refresh(){
  if(ENDED){say('انتهت الجلسة ✅<br><small class="mu">شكراً لزيارتكم - نتمنى نشوفكم تاني في Fast X</small>');return}
- if(!ST||!MN)return;$('#msg').style.display='none';
- $('#sn').textContent=ST.n;$('#shop').textContent=MN.shop;
- $('#items').innerHTML=ST.L.map(l=>'<div class="r"><span>'+l[2]+' × '+esc(l[0])+'</span><span>'+r2(l[1]*l[2])+' '+esc(MN.cur)+'</span></div>').join('')+(ST.pct?'<div class="r" style="color:var(--ok)"><span>خصم '+ST.pct+'%</span></div>':'');
+ if(!ST)return;$('#msg').style.display='none';
+ $('#sn').textContent=ST.n;$('#shop').textContent=SHOP();
+ $('#items').innerHTML=ST.L.map(l=>'<div class="r"><span>'+l[2]+' × '+esc(l[0])+'</span><span>'+r2(l[1]*l[2])+' '+esc(CUR())+'</span></div>').join('')+(ST.pct?'<div class="r" style="color:var(--ok)"><span>خصم '+ST.pct+'%</span></div>':'');
  $('#sent').innerHTML=SENT.length?'<div class="card sent"><h3>✔ طلباتك وصلت للكاشير وقيد التحضير</h3>'+SENT.map(s=>s.l.map(l=>'<div>'+l.q+' × '+esc(l.n)+'</div>').join('')).join('<hr style="border-color:#2c2c2c">')+'</div>':'';
  draw();tick()}
 function cats(){const o=[];MN.items.forEach(x=>{if(o.indexOf(x[2])<0)o.push(x[2])});return o}
 function draw(){
- if(!MN)return;const cs=cats();if(TAB!='all'&&cs.indexOf(TAB)<0)TAB='all';
+ if(!MN){const m=$('#m');if(m)m.innerHTML='<div class="mu" style="text-align:center;padding:22px">جاري تحميل المنيو...</div>';$('#tabs').style.display='none';$('#bar').style.display='none';return}$('#bar').style.display='';const cs=cats();if(TAB!='all'&&cs.indexOf(TAB)<0)TAB='all';
  $('#tabs').innerHTML=cs.length>1?[['all','الكل']].concat(cs.map(c=>[c,CATS[c]||c])).map(([k,t])=>'<button class="tab'+(TAB==k?' on':'')+'" onclick="TAB=\''+k.replace(/'/g,'')+'\';draw()">'+esc(t)+'</button>').join(''):'';
  $('#tabs').style.display=cs.length>1?'flex':'none';
  $('#m').innerHTML=cs.filter(c=>TAB=='all'||TAB==c).map(c=>{const l=MN.items.map((x,i)=>[x,i]).filter(a=>a[0][2]==c);
