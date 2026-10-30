@@ -103,10 +103,14 @@ function say(t){$('#mt').innerHTML=t;$('#msg').style.display='flex'}
 function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2600)}
 if(!K)say('الرابط غير صحيح.<br><small class="mu">امسح الـ QR من الإيصال تاني</small>');
 else{say('جاري التحميل...');
- const es=new EventSource('https://ntfy.sh/'+K+'/sse?since=12h');
- es.onmessage=ev=>{try{const m=JSON.parse(ev.data);if(m.event!='message')return;const o=JSON.parse(m.message);
+ const got=m=>{try{if(m.event!='message')return;const o=JSON.parse(m.message);
   if(o.type=='state'){ST=o;ST._at=(m.time||Date.now()/1000)*1000;ENDED=false;SENT=SENT.filter(s=>s.t>ST._at)}
-  else if(o.type=='menu')MN=o;else if(o.type=='ended')ENDED=true;else return;refresh()}catch(e){}}}
+  else if(o.type=='menu')MN=o;else if(o.type=='ended')ENDED=true;else return;refresh()}catch(e){}};
+ try{const es=new EventSource('https://ntfy.sh/'+K+'/sse?since=12h');es.onmessage=ev=>{try{got(JSON.parse(ev.data))}catch(e){}}}catch(e){}
+ /* fallback: some networks block the live stream, so also poll every few seconds until data arrives */
+ const poll=async()=>{if(ST&&MN)return;try{const r=await fetch('https://ntfy.sh/'+K+'/json?poll=1&since=12h');const t=await r.text();t.split('\n').forEach(l=>{if(l.trim())try{got(JSON.parse(l))}catch(e){}})}catch(e){}};
+ poll();const pt=setInterval(()=>{if(ST&&MN)clearInterval(pt);else poll()},4000);
+ setTimeout(()=>{if(!(ST&&MN))say('لسه مفيش بيانات للجلسة دي.<br><small class="mu">اتأكد إن النت شغال، وإن الجلسة لسه مفتوحة، أو اطلب من الكاشير يعيد تشغيل البرنامج</small>')},15000)}
 function elapsed(){if(!ST)return 0;return(ST.acc+(ST.start?Math.max(0,Date.now()-ST._at)+(ST._at-ST.start):0))/60000}
 function tAmt(m){const k=ST.k,r=ST.r;if(ST.pre){const o=m-ST.pre;return o>0?r2(Math.ceil(o/k)*k/60*r):0}
  if(!(m>0))return 0;const sg=ST.sg||[],sm=sg.reduce((a,x)=>a+x.m,0),B=Math.max(ST.m,Math.ceil(m/k)*k);
