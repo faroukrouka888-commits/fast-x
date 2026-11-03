@@ -58,11 +58,11 @@ function b64(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 try{var m=location.hash.match(/c=([^&]+)/);if(m)C=JSON.parse(b64(m[1]))}catch(e){}
 var TX={
-ar:{sw:'English',ttl:'احجز الآن',h:'احجز مكانك',sub:'املأ البيانات وهيوصل طلبك على واتساب، وهنأكد معاك الحجز.',ty:'اختار النوع',nm:'الاسم',nmP:'اسمك',ph:'رقم الموبايل',dt:'التاريخ والوقت',du:'المدة',gs:'عدد الأشخاص',nt:'ملاحظات (اختياري)',ntP:'عيد ميلاد، ماتش، أي طلب خاص',es:'التكلفة التقريبية',perH:'/ ساعة',dpT:'العربون مطلوب لتأكيد الحجز',dpV:'حوّل العربون عن طريق',dpN:'بعد التحويل ابعت صورة التحويل على واتساب مع الطلب.',cp:'نسخ',cpd:'تم',go:'إرسال طلب الحجز على واتساب',nte:'الحجز بيتأكد بعد رد المكان على واتساب.',e1:'اكتب اسمك.',e2:'اكتب رقم موبايل صحيح.',e3:'اختار تاريخ ووقت في المستقبل.',bad:'الرابط غير مكتمل',badP:'اطلب من المكان إعادة إرسال كود الحجز.',ofT:'% من التكلفة',avH:'الوقت ده محجوز',avAll:'كل الغرف محجوزة في الوقت ده',avR:'محجوز من {a} لحد {b}',avT:'أقرب مواعيد متاحة لنفس النوع',avO:'أو اختار نوع تاني متاح في نفس الوقت',avNone:'مفيش مواعيد متاحة قريبة، جرّب يوم تاني.',avBlock:'الوقت ده محجوز. اختار ميعاد تاني من الاقتراحات.',
+ar:{sw:'English',ttl:'احجز الآن',h:'احجز مكانك',sub:'املأ البيانات وهيوصل طلبك على واتساب، وهنأكد معاك الحجز.',ty:'اختار النوع',nm:'الاسم',nmP:'اسمك',ph:'رقم الموبايل',dt:'التاريخ والوقت',du:'المدة',gs:'عدد الأشخاص',nt:'ملاحظات (اختياري)',ntP:'عيد ميلاد، ماتش، أي طلب خاص',es:'التكلفة التقريبية',perH:'/ ساعة',dpT:'العربون مطلوب لتأكيد الحجز',dpV:'حوّل العربون عن طريق',dpN:'بعد التحويل ابعت صورة التحويل على واتساب مع الطلب.',cp:'نسخ',cpd:'تم',go:'إرسال طلب الحجز على واتساب',nte:'الحجز بيتأكد بعد رد المكان على واتساب.',e1:'اكتب اسمك.',e2:'اكتب رقم موبايل صحيح.',e3:'اختار تاريخ ووقت في المستقبل.',bad:'الرابط غير مكتمل',badP:'اطلب من المكان إعادة إرسال كود الحجز.',ofT:'% من التكلفة',sg:'سينجل',ml:'مالتي',op:'اختار نوع اللعب',fr:'من',avH:'الوقت ده محجوز',avAll:'كل الغرف محجوزة في الوقت ده',avR:'محجوز من {a} لحد {b}',avT:'أقرب مواعيد متاحة لنفس النوع',avO:'أو اختار نوع تاني متاح في نفس الوقت',avNone:'مفيش مواعيد متاحة قريبة، جرّب يوم تاني.',avBlock:'الوقت ده محجوز. اختار ميعاد تاني من الاقتراحات.',
  dur:['ساعة','ساعة ونص','ساعتين','3 ساعات','4 ساعات','5 ساعات'],days:['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'],
  types:{PS5:'غرف بلايستيشن',PSN:'بلايستيشن عادي',Pool:'بلياردو',Sim:'محاكي قيادة',Cinema:'غرفة سينما'},
  m:{h:'طلب حجز جديد',n:'الاسم',p:'الموبايل',t:'النوع',w:'الموعد',d:'المدة',g:'عدد الأشخاص',c:'التكلفة التقريبية',dp:'العربون المطلوب',pm:'وسيلة دفع العربون',pr:'سأرسل صورة التحويل هنا',nt:'ملاحظات'}},
-en:{sw:'العربية',ttl:'Book now',h:'Book your spot',sub:'Fill in your details and your request goes to us on WhatsApp. We will confirm your booking there.',ty:'Choose a type',nm:'Name',nmP:'Your name',ph:'Mobile number',dt:'Date and time',du:'Duration',gs:'Number of people',nt:'Notes (optional)',ntP:'Birthday, match, any special request',es:'Estimated cost',perH:'/ hour',dpT:'A deposit is required to confirm your booking',dpV:'Send the deposit via',dpN:'After transferring, send the transfer screenshot on WhatsApp with your request.',cp:'Copy',cpd:'Copied',go:'Send booking request on WhatsApp',nte:'Your booking is confirmed once we reply on WhatsApp.',e1:'Enter your name.',e2:'Enter a valid mobile number.',e3:'Pick a date and time in the future.',bad:'Incomplete link',badP:'Ask the venue to send you the booking code again.',ofT:'% of the total',avH:'This time is booked',avAll:'All rooms are booked at this time',avR:'Booked from {a} to {b}',avT:'Nearest available times for the same type',avO:'Or pick another type that is free at the same time',avNone:'No nearby slots available, try another day.',avBlock:'This time is booked. Pick another time from the suggestions.',
+en:{sw:'العربية',ttl:'Book now',h:'Book your spot',sub:'Fill in your details and your request goes to us on WhatsApp. We will confirm your booking there.',ty:'Choose a type',nm:'Name',nmP:'Your name',ph:'Mobile number',dt:'Date and time',du:'Duration',gs:'Number of people',nt:'Notes (optional)',ntP:'Birthday, match, any special request',es:'Estimated cost',perH:'/ hour',dpT:'A deposit is required to confirm your booking',dpV:'Send the deposit via',dpN:'After transferring, send the transfer screenshot on WhatsApp with your request.',cp:'Copy',cpd:'Copied',go:'Send booking request on WhatsApp',nte:'Your booking is confirmed once we reply on WhatsApp.',e1:'Enter your name.',e2:'Enter a valid mobile number.',e3:'Pick a date and time in the future.',bad:'Incomplete link',badP:'Ask the venue to send you the booking code again.',ofT:'% of the total',sg:'Single',ml:'Multi',op:'Play mode',fr:'from',avH:'This time is booked',avAll:'All rooms are booked at this time',avR:'Booked from {a} to {b}',avT:'Nearest available times for the same type',avO:'Or pick another type that is free at the same time',avNone:'No nearby slots available, try another day.',avBlock:'This time is booked. Pick another time from the suggestions.',
  dur:['1 hour','1.5 hours','2 hours','3 hours','4 hours','5 hours'],days:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
  types:{PS5:'PS Rooms',PSN:'PS Normal',Pool:'8-Ball',Sim:'Driving Simulator',Cinema:'Cinema Room'},
  m:{h:'New booking request',n:'Name',p:'Mobile',t:'Type',w:'Date & time',d:'Duration',g:'People',c:'Estimated cost',dp:'Deposit required',pm:'Deposit method',pr:'I will send the transfer screenshot here',nt:'Notes'}}};
@@ -73,22 +73,30 @@ function nextHour(){var d=new Date(Date.now()+3600000);d.setMinutes(0,0,0);retur
 function setLang(l){LG=l;try{localStorage.setItem('fxl',l)}catch(e){}render()}
 lgb.onclick=function(){setLang(LG==='ar'?'en':'ar')};
 var ok=!!(C&&C.w&&C.t&&C.t.length),TYPE=ok?C.t:[],cur=ok&&C.c?C.c:'EGP';
-var S={sel:0,nm:'',ph:'',dt:nextHour(),du:'0',gs:'2',nt:'',pm:'0'};
+var S={sel:0,op:0,nm:'',ph:'',dt:nextHour(),du:'0',gs:'2',nt:'',pm:'0'};
 function tl(t){var x=TX[LG].types[t[0]];return x||t[1]}
-function total(){return (+TYPE[S.sel][2]||0)*DU[+S.du]}
+function opts(i){var x=TYPE[i];return x&&x[3]&&x[3].length?x[3]:null}
+function opAt(i,k){var o=opts(i);return o?(o[k]||o[0]):null}
+function opRoom(o){if(!o)return null;var n=String(o[0]),m=n.match(/^(.*?)\s*-\s*@[sm]$/);if(m)return m[1];return /^@[sm]$/.test(n)?null:n}
+function opLbl(n,t){return String(n).replace(/@s/g,t.sg).replace(/@m/g,t.ml)}
+function price(i,k){var o=opAt(i,k);return o?(+o[1]||0):(+TYPE[i][2]||0)}
+function total(){return price(S.sel,S.op)*DU[+S.du]}
+function rr(){var y=window.pageYOffset||0;render();try{window.scrollTo(0,y)}catch(e){}}
 function depAmt(){if(!C.d)return 0;var t=total();return C.d[0]=='f'?+C.d[1]:(t?Math.round(t*C.d[1])/100:0)}
 var AV=null,CHK=null;
 function loadAv(){if(!C||!C.a)return;fetch('https://ntfy.sh/'+encodeURIComponent(C.a)+'/json?poll=1&since=all').then(function(r){return r.text()}).then(function(tx){var last=null;tx.split('\n').forEach(function(l){if(!l)return;try{var o=JSON.parse(l);if(o.event==='message'&&o.message){var m=JSON.parse(o.message);if(m&&m.u&&m.g!=null)last=m}}catch(e){}});if(last){AV=last;if(CHK)CHK()}}).catch(function(){})}
 function ivs(iv,s,e){var o=[];for(var i=0;i<iv.length;i++){var a=AV.g*60000+iv[i][0]*300000,b=AV.g*60000+iv[i][1]*300000;if(s<b&&e>a)o.push([a,b])}return o}
 /* returns null if at least one room of the type is free (or unknown); else {n:rooms count, span:[from,to]} */
-function status(type,s,e){var R=AV&&AV.u&&AV.u[type];if(!R)return null;var nm=Object.keys(R);if(!nm.length)return null;var span=null;for(var i=0;i<nm.length;i++){var o=ivs(R[nm[i]],s,e);if(!o.length)return null;o.forEach(function(x){span=span?[Math.min(span[0],x[0]),Math.max(span[1],x[1])]:x})}return{n:nm.length,span:span}}
-function freeTimes(i,s,dur){var out=[],now=Date.now(),k,sg;for(k=1;k<=48&&out.length<4;k++){[1,-1].forEach(function(g){var c=s+g*k*1800000;if(c<now)return;if(!status(TYPE[i][0],c,c+dur))out.push(c)})}return out.slice(0,4).sort(function(a,b){return a-b})}
+function status(type,s,e,room){try{var R=AV&&AV.u&&AV.u[type];if(!R)return null;var nm=Object.keys(R);if(!nm.length)return null;if(room&&R[room])nm=[room];var span=null;for(var i=0;i<nm.length;i++){var o=ivs(R[nm[i]],s,e);if(!o.length)return null;o.forEach(function(x){span=span?[Math.min(span[0],x[0]),Math.max(span[1],x[1])]:x})}return{n:nm.length,span:span}}catch(err){return null}}
+function st(i,k,s,e){return status(TYPE[i][0],s,e,opRoom(opAt(i,k)))}
+function freeTimes(i,k,s,dur){var out=[],now=Date.now(),n,sg;for(n=1;n<=48&&out.length<4;n++){[1,-1].forEach(function(g){var c=s+g*n*1800000;if(c<now)return;if(!st(i,k,c,c+dur))out.push(c)})}return out.slice(0,4).sort(function(a,b){return a-b})}
 function render(){
  var t=TX[LG];document.documentElement.lang=LG;document.documentElement.dir=LG==='ar'?'rtl':'ltr';
  document.title='Fast X - '+t.ttl;lgb.textContent=t.sw;
  if(!ok){app.innerHTML='<div class="empty"><h1>'+t.bad+'</h1><p>'+t.badP+'</p></div>';return}
  app.innerHTML='<p class="brand">'+esc(C.n||'')+'</p><h1>'+t.h+'</h1><p class="sub">'+t.sub+'</p><div class="card">'
- +'<label>'+t.ty+'</label><div class="types" id="ty">'+TYPE.map(function(x,i){return'<button type="button" class="t'+(i===S.sel?' on':'')+'" data-i="'+i+'"><b>'+esc(tl(x))+'</b><small>'+(x[2]?x[2]+' '+esc(cur)+' '+t.perH:'&nbsp;')+'</small></button>'}).join('')+'</div>'
+ +'<label>'+t.ty+'</label><div class="types" id="ty">'+TYPE.map(function(x,i){return'<button type="button" class="t'+(i===S.sel?' on':'')+'" data-i="'+i+'"><b>'+esc(tl(x))+'</b><small>'+(opts(i)?t.fr+' '+Math.min.apply(null,opts(i).map(function(o){return +o[1]||0}))+' '+esc(cur)+' '+t.perH:(x[2]?x[2]+' '+esc(cur)+' '+t.perH:'&nbsp;'))+'</small></button>'}).join('')+'</div>'
+ +(opts(S.sel)?'<label>'+t.op+'</label><div class="types" id="op">'+opts(S.sel).map(function(o,k){return'<button type="button" class="t'+(k===S.op?' on':'')+'" data-k="'+k+'"><b>'+esc(opLbl(o[0],t))+'</b><small>'+(+o[1]||0)+' '+esc(cur)+' '+t.perH+'</small></button>'}).join('')+'</div>':'')
  +'<label for="nm">'+t.nm+'</label><input id="nm" autocomplete="name" placeholder="'+t.nmP+'">'
  +'<label for="ph">'+t.ph+'</label><input id="ph" class="ltr" type="tel" inputmode="tel" autocomplete="tel" placeholder="01xxxxxxxxx">'
  +'<div class="row"><div><label for="dt">'+t.dt+'</label><input id="dt" class="ltr" type="datetime-local"></div><div><label for="du">'+t.du+'</label><select id="du">'+t.dur.map(function(x,i){return'<option value="'+i+'">'+x+'</option>'}).join('')+'</select></div></div>'
@@ -102,19 +110,22 @@ function render(){
  function est(){var tt=total();$('es').textContent=tt?Math.round(tt*100)/100+' '+cur:'-';
   if(C.d){$('dp').textContent=C.d[0]=='f'?C.d[1]+' '+cur:(tt?depAmt()+' '+cur+' ('+C.d[1]+'%)':C.d[1]+t.ofT);acc()}chk()}
  function whenS(ms){var d=new Date(ms);return t.days[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1)+' - '+pad(d.getHours())+':'+pad(d.getMinutes())}
- function chk(){var el=$('av');if(!el)return;var s=new Date(S.dt).getTime(),dur=DU[+S.du]*3600000;if(isNaN(s)){el.innerHTML='';return}
-  var cf=status(TYPE[S.sel][0],s,s+dur);if(!cf){el.innerHTML='';return}
-  var h='<div class="av"><b>⛔ '+t.avH+'</b><div class="avs">'+esc(tl(TYPE[S.sel]))+' - '+(cf.n>1?t.avAll:t.avR.replace('{a}',whenS(cf.span[0])).replace('{b}',whenS(cf.span[1])))+'</div>',
-   ft=freeTimes(S.sel,s,dur),ot=[];
-  TYPE.forEach(function(x,j){if(j!==S.sel&&!status(x[0],s,s+dur))ot.push(j)});
+ function sLbl(i,k){var o=opAt(i,k);return tl(TYPE[i])+(o?' - '+opLbl(o[0],t):'')}
+ function chk(){try{chk0()}catch(e){}}
+ function chk0(){var el=$('av');if(!el)return;var s=new Date(S.dt).getTime(),dur=DU[+S.du]*3600000;if(isNaN(s)){el.innerHTML='';return}
+  var cf=st(S.sel,S.op,s,s+dur);if(!cf){el.innerHTML='';return}
+  var h='<div class="av"><b>⛔ '+t.avH+'</b><div class="avs">'+esc(sLbl(S.sel,S.op))+' - '+(cf.n>1?t.avAll:t.avR.replace('{a}',whenS(Math.round(cf.span[0]/300000)*300000)).replace('{b}',whenS(Math.round(cf.span[1]/300000)*300000)))+'</div>',
+   ft=freeTimes(S.sel,S.op,s,dur),ot=[];
+  TYPE.forEach(function(x,i){var o=opts(i),n=o?o.length:1,k;for(k=0;k<n;k++){if(i===S.sel&&k===S.op)continue;if(!st(i,k,s,s+dur)){ot.push([i,k]);break}}});
   if(ft.length)h+='<h4>'+t.avT+'</h4><div class="bs">'+ft.map(function(c){return'<button type="button" data-ts="'+c+'">'+whenS(c)+'</button>'}).join('')+'</div>';
-  if(ot.length)h+='<h4>'+t.avO+'</h4><div class="bs">'+ot.map(function(j){return'<button type="button" data-ty="'+j+'">'+esc(tl(TYPE[j]))+'</button>'}).join('')+'</div>';
+  if(ot.length)h+='<h4>'+t.avO+'</h4><div class="bs">'+ot.map(function(x){return'<button type="button" data-ty="'+x[0]+'" data-k="'+x[1]+'">'+esc(sLbl(x[0],x[1]))+'</button>'}).join('')+'</div>';
   if(!ft.length&&!ot.length)h+='<h4>'+t.avNone+'</h4>';
   el.innerHTML=h+'</div>'}
  CHK=chk;
- $('av').onclick=function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.ts){S.dt=fmt(new Date(+b.dataset.ts));render()}else if(b.dataset.ty){S.sel=+b.dataset.ty;render()}};
+ $('av').onclick=function(e){var b=e.target.closest('button');if(!b)return;if(b.dataset.ts){S.dt=fmt(new Date(+b.dataset.ts));rr()}else if(b.dataset.ty){S.sel=+b.dataset.ty;S.op=+b.dataset.k||0;rr()}};
  function acc(){var s=$('pm'),a=$('ac');if(!s||!a)return;var x=C.p[+s.value];a.innerHTML='<b>'+esc(x[1])+'</b><button type="button" id="cp">'+t.cp+'</button>';$('cp').onclick=function(){try{navigator.clipboard.writeText(x[1]);this.textContent=t.cpd}catch(e){}}}
- $('ty').onclick=function(e){var b=e.target.closest('.t');if(!b)return;S.sel=+b.dataset.i;[].forEach.call(document.querySelectorAll('.t'),function(x){x.classList.toggle('on',x===b)});est()};
+ $('ty').onclick=function(e){var b=e.target.closest('.t');if(!b)return;S.sel=+b.dataset.i;S.op=0;rr()};
+ if($('op'))$('op').onclick=function(e){var b=e.target.closest('.t');if(!b)return;S.op=+b.dataset.k||0;rr()};
  ['nm','ph','dt','du','gs','nt'].forEach(function(k){$(k).oninput=$(k).onchange=function(){S[k]=this.value;if(k==='du'||k==='dt')est()}});
  if($('pm'))$('pm').onchange=function(){S.pm=this.value;acc()};
  est();
@@ -123,11 +134,11 @@ function render(){
   if(!n)return er.textContent=t.e1;
   if(p.replace(/\D/g,'').length<8)return er.textContent=t.e2;
   if(isNaN(d.getTime())||d.getTime()<Date.now()-60000)return er.textContent=t.e3;
-  if(status(TYPE[S.sel][0],d.getTime(),d.getTime()+DU[+S.du]*3600000)){er.textContent=t.avBlock;try{$('av').scrollIntoView({behavior:'smooth',block:'center'})}catch(x){}return}
+  if(st(S.sel,S.op,d.getTime(),d.getTime()+DU[+S.du]*3600000)){er.textContent=t.avBlock;try{$('av').scrollIntoView({behavior:'smooth',block:'center'})}catch(x){}return}
   var pmx=(C.d&&C.p&&C.p.length)?C.p[+S.pm]:null,x=TYPE[S.sel],M=t.m;
   var when=t.days[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear()+' - '+pad(d.getHours())+':'+pad(d.getMinutes());
-  var msg=[M.h+' - '+(C.n||''),'',M.n+': '+n,M.p+': '+p,M.t+': '+tl(x),M.w+': '+when,M.d+': '+t.dur[+S.du],M.g+': '+(S.gs||'-')]
-   .concat(+x[2]?[M.c+': '+$('es').textContent]:[]).concat(C.d?[M.dp+': '+$('dp').textContent]:[]).concat(pmx?[M.pm+': '+pmx[0]+' ('+pmx[1]+')',M.pr]:[]).concat(S.nt.trim()?[M.nt+': '+S.nt.trim()]:[]).join('\n');
+  var msg=[M.h+' - '+(C.n||''),'',M.n+': '+n,M.p+': '+p,M.t+': '+sLbl(S.sel,S.op),M.w+': '+when,M.d+': '+t.dur[+S.du],M.g+': '+(S.gs||'-')]
+   .concat(total()?[M.c+': '+$('es').textContent]:[]).concat(C.d?[M.dp+': '+$('dp').textContent]:[]).concat(pmx?[M.pm+': '+pmx[0]+' ('+pmx[1]+')',M.pr]:[]).concat(S.nt.trim()?[M.nt+': '+S.nt.trim()]:[]).join('\n');
   location.href='https://wa.me/'+String(C.w).replace(/\D/g,'')+'?text='+encodeURIComponent(msg)};
 }
 render();loadAv();setInterval(loadAv,45000);
