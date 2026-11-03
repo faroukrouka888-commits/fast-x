@@ -35,6 +35,11 @@ html[dir=rtl] .ltr{text-align:right}
 .t.on{border-color:var(--ac);background:#1a0606}
 .t.on .ic{background:var(--ac);color:#fff}
 .t.on .dot{border-color:var(--ac);background:var(--ac);box-shadow:inset 0 0 0 4px #1a0606}
+.vopts{display:flex;flex-wrap:wrap;gap:8px;padding:2px 2px 6px}
+.vo{flex:1 1 120px;text-align:center;padding:9px 10px;border:2px solid var(--ln);border-radius:10px;background:var(--pn);transition:border-color .15s,background .15s}
+.vo b{display:block}
+.vo small{color:var(--mu)}
+.vo.on{border-color:var(--ac);background:#2a0808}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .chip{padding:10px 6px;text-align:center;border:2px solid var(--ln);border-radius:10px;background:var(--pn);transition:border-color .15s,background .15s}
@@ -73,11 +78,11 @@ function b64(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 try{var m=location.hash.match(/c=([^&]+)/);if(m)C=JSON.parse(b64(m[1]))}catch(e){}
 var TX={
-ar:{sw:'English',ttl:'احجز الآن',h:'احجز مكانك',sub:'املأ البيانات وهيوصل طلبك على واتساب، وهنأكد معاك الحجز.',ty:'اختار النوع',s2:'الموعد',s3:'بياناتك',nm:'الاسم',nmP:'اسمك',ph:'رقم الموبايل',dt:'التاريخ والوقت',du:'المدة',gs:'عدد الأشخاص',nt:'ملاحظات (اختياري)',ntP:'عيد ميلاد، ماتش، أي طلب خاص',es:'التكلفة التقريبية',perH:'/ ساعة',dpT:'العربون مطلوب لتأكيد الحجز',dpV:'حوّل العربون عن طريق',dpN:'بعد التحويل ابعت صورة التحويل على واتساب مع الطلب.',cp:'نسخ',cpd:'تم',go:'إرسال طلب الحجز على واتساب',nte:'الحجز بيتأكد بعد رد المكان على واتساب.',e1:'اكتب اسمك.',e2:'اكتب رقم موبايل صحيح.',e3:'اختار تاريخ ووقت في المستقبل.',bad:'الرابط غير مكتمل',badP:'اطلب من المكان إعادة إرسال كود الحجز.',ofT:'% من التكلفة',
+ar:{sw:'English',ttl:'احجز الآن',h:'احجز مكانك',sub:'املأ البيانات وهيوصل طلبك على واتساب، وهنأكد معاك الحجز.',ty:'اختار النوع',fr:'من',sg:'سينجل',ml:'مالتي',s2:'الموعد',s3:'بياناتك',nm:'الاسم',nmP:'اسمك',ph:'رقم الموبايل',dt:'التاريخ والوقت',du:'المدة',gs:'عدد الأشخاص',nt:'ملاحظات (اختياري)',ntP:'عيد ميلاد، ماتش، أي طلب خاص',es:'التكلفة التقريبية',perH:'/ ساعة',dpT:'العربون مطلوب لتأكيد الحجز',dpV:'حوّل العربون عن طريق',dpN:'بعد التحويل ابعت صورة التحويل على واتساب مع الطلب.',cp:'نسخ',cpd:'تم',go:'إرسال طلب الحجز على واتساب',nte:'الحجز بيتأكد بعد رد المكان على واتساب.',e1:'اكتب اسمك.',e2:'اكتب رقم موبايل صحيح.',e3:'اختار تاريخ ووقت في المستقبل.',bad:'الرابط غير مكتمل',badP:'اطلب من المكان إعادة إرسال كود الحجز.',ofT:'% من التكلفة',
  dur:['ساعة','ساعة ونص','ساعتين','3 ساعات','4 ساعات','5 ساعات'],days:['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'],
  types:{PS5:'غرف بلايستيشن',PSN:'بلايستيشن عادي',Pool:'بلياردو',Sim:'محاكي قيادة',Cinema:'غرفة سينما'},
  m:{h:'طلب حجز جديد',n:'الاسم',p:'الموبايل',t:'النوع',w:'الموعد',d:'المدة',g:'عدد الأشخاص',c:'التكلفة التقريبية',dp:'العربون المطلوب',pm:'وسيلة دفع العربون',pr:'سأرسل صورة التحويل هنا',nt:'ملاحظات'}},
-en:{sw:'العربية',ttl:'Book now',h:'Book your spot',sub:'Fill in your details and your request goes to us on WhatsApp. We will confirm your booking there.',ty:'Choose a type',s2:'When',s3:'Your details',nm:'Name',nmP:'Your name',ph:'Mobile number',dt:'Date and time',du:'Duration',gs:'Number of people',nt:'Notes (optional)',ntP:'Birthday, match, any special request',es:'Estimated cost',perH:'/ hour',dpT:'A deposit is required to confirm your booking',dpV:'Send the deposit via',dpN:'After transferring, send the transfer screenshot on WhatsApp with your request.',cp:'Copy',cpd:'Copied',go:'Send booking request on WhatsApp',nte:'Your booking is confirmed once we reply on WhatsApp.',e1:'Enter your name.',e2:'Enter a valid mobile number.',e3:'Pick a date and time in the future.',bad:'Incomplete link',badP:'Ask the venue to send you the booking code again.',ofT:'% of the total',
+en:{sw:'العربية',ttl:'Book now',h:'Book your spot',sub:'Fill in your details and your request goes to us on WhatsApp. We will confirm your booking there.',ty:'Choose a type',fr:'from',sg:'Single',ml:'Multi',s2:'When',s3:'Your details',nm:'Name',nmP:'Your name',ph:'Mobile number',dt:'Date and time',du:'Duration',gs:'Number of people',nt:'Notes (optional)',ntP:'Birthday, match, any special request',es:'Estimated cost',perH:'/ hour',dpT:'A deposit is required to confirm your booking',dpV:'Send the deposit via',dpN:'After transferring, send the transfer screenshot on WhatsApp with your request.',cp:'Copy',cpd:'Copied',go:'Send booking request on WhatsApp',nte:'Your booking is confirmed once we reply on WhatsApp.',e1:'Enter your name.',e2:'Enter a valid mobile number.',e3:'Pick a date and time in the future.',bad:'Incomplete link',badP:'Ask the venue to send you the booking code again.',ofT:'% of the total',
  dur:['1 hour','1.5 hours','2 hours','3 hours','4 hours','5 hours'],days:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
  types:{PS5:'PS Rooms',PSN:'PS Normal',Pool:'8-Ball',Sim:'Driving Simulator',Cinema:'Cinema Room'},
  m:{h:'New booking request',n:'Name',p:'Mobile',t:'Type',w:'Date & time',d:'Duration',g:'People',c:'Estimated cost',dp:'Deposit required',pm:'Deposit method',pr:'I will send the transfer screenshot here',nt:'Notes'}}};
@@ -95,17 +100,19 @@ function nextHour(){var d=new Date(Date.now()+3600000);d.setMinutes(0,0,0);retur
 function setLang(l){LG=l;try{localStorage.setItem('fxl',l)}catch(e){}render()}
 lgb.onclick=function(){setLang(LG==='ar'?'en':'ar')};
 var ok=!!(C&&C.w&&C.t&&C.t.length),TYPE=ok?C.t:[],cur=ok&&C.c?C.c:'EGP';
-var S={sel:0,nm:'',ph:'',dt:nextHour(),du:'0',gs:'2',nt:'',pm:'0'};
+var S={sel:0,v:0,nm:'',ph:'',dt:nextHour(),du:'0',gs:'2',nt:'',pm:'0'};
 function tl(t){var x=TX[LG].types[t[0]];return x||t[1]}
-function total(){return (+TYPE[S.sel][2]||0)*DU[+S.du]}
+function opts(x){return x[3]&&x[3].length?x[3]:null}
+function pr(){var x=TYPE[S.sel],o=opts(x);return +(o&&o[S.v]?o[S.v][1]:x[2])||0}
+function total(){return pr()*DU[+S.du]}
 function depAmt(){if(!C.d)return 0;var t=total();return C.d[0]=='f'?+C.d[1]:(t?Math.round(t*C.d[1])/100:0)}
 function render(){
  var t=TX[LG];document.documentElement.lang=LG;document.documentElement.dir=LG==='ar'?'rtl':'ltr';
  document.title='Fast X - '+t.ttl;lgb.textContent=t.sw;
  if(!ok){app.innerHTML='<div class="empty"><h1>'+t.bad+'</h1><p>'+t.badP+'</p></div>';return}
- var ic=function(k){return ICON[k]||ICON.PSN};
+ var ic=function(k){return ICON[k]||ICON.PSN},ol=function(l){return String(l).replace(/@s$/,t.sg).replace(/@m$/,t.ml)};
  app.innerHTML='<p class="brand">'+esc(C.n||'')+'</p><h1>'+t.h+'</h1><p class="sub">'+t.sub+'</p>'
- +'<section class="sec"><h2 id="tyh">'+t.ty+'</h2><div class="types" id="ty" role="radiogroup" aria-labelledby="tyh">'+TYPE.map(function(x,i){return'<button type="button" role="radio" aria-checked="'+(i===S.sel)+'" class="t'+(i===S.sel?' on':'')+'" data-i="'+i+'"><span class="ic">'+ic(x[0])+'</span><span class="tn"><b>'+esc(tl(x))+'</b><small>'+(x[2]?x[2]+' '+esc(cur)+' '+t.perH:'&nbsp;')+'</small></span><span class="dot"></span></button>'}).join('')+'</div></section>'
+ +'<section class="sec"><h2 id="tyh">'+t.ty+'</h2><div class="types" id="ty" role="radiogroup" aria-labelledby="tyh"></div></section>'
  +'<section class="sec"><h2>'+t.s2+'</h2>'
  +'<label for="dt">'+t.dt+'</label><input id="dt" class="ltr" type="datetime-local">'
  +'<label id="duh">'+t.du+'</label><div class="chips" id="du" role="radiogroup" aria-labelledby="duh">'+t.dur.map(function(x,i){var on=String(i)===S.du;return'<button type="button" role="radio" aria-checked="'+on+'" class="chip'+(on?' on':'')+'" data-i="'+i+'">'+x+'</button>'}).join('')+'</div>'
@@ -121,7 +128,16 @@ function render(){
  function est(){var tt=total();$('es').textContent=tt?Math.round(tt*100)/100+' '+cur:'-';
   if(C.d){$('dp').textContent=C.d[0]=='f'?C.d[1]+' '+cur:(tt?depAmt()+' '+cur+' ('+C.d[1]+'%)':C.d[1]+t.ofT);acc()}}
  function acc(){var s=$('pm'),a=$('ac');if(!s||!a)return;var x=C.p[+s.value];a.innerHTML='<b>'+esc(x[1])+'</b><button type="button" id="cp">'+t.cp+'</button>';$('cp').onclick=function(){try{navigator.clipboard.writeText(x[1]);this.textContent=t.cpd}catch(e){}}}
- $('ty').onclick=function(e){var b=e.target.closest('.t');if(!b)return;S.sel=+b.dataset.i;[].forEach.call(document.querySelectorAll('.t'),function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-checked',on)});est()};
+ function drawTypes(foc){
+  $('ty').innerHTML=TYPE.map(function(x,i){var o=opts(x),on=i===S.sel,lo=o?Math.min.apply(null,o.map(function(y){return +y[1]||0})):+x[2];
+   var h='<button type="button" role="radio" aria-checked="'+on+'" class="t'+(on?' on':'')+'" data-i="'+i+'"><span class="ic">'+ic(x[0])+'</span><span class="tn"><b>'+esc(tl(x))+'</b><small>'+(lo?(o?t.fr+' ':'')+lo+' '+esc(cur)+' '+t.perH:'&nbsp;')+'</small></span><span class="dot"></span></button>';
+   if(on&&o)h+='<div class="vopts" role="radiogroup">'+o.map(function(y,j){var v=j===S.v;return'<button type="button" role="radio" aria-checked="'+v+'" class="vo'+(v?' on':'')+'" data-v="'+j+'"><b>'+esc(ol(y[0]))+'</b><small>'+y[1]+' '+esc(cur)+'</small></button>'}).join('')+'</div>';
+   return h}).join('');
+  if(foc){var f=$('ty').querySelector(foc);if(f)f.focus()}}
+ drawTypes();
+ $('ty').onclick=function(e){var b=e.target.closest('.t'),v=e.target.closest('.vo');
+  if(v){S.v=+v.dataset.v;drawTypes('.vo[data-v="'+S.v+'"]');est();return}
+  if(!b)return;var i=+b.dataset.i;if(i!==S.sel){S.sel=i;S.v=0}drawTypes('.t[data-i="'+i+'"]');est()};
  $('du').onclick=function(e){var b=e.target.closest('.chip');if(!b)return;S.du=b.dataset.i;[].forEach.call(document.querySelectorAll('.chip'),function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-checked',on)});est()};
  function bump(d){var v=parseInt(S.gs,10)||1;v=Math.max(1,Math.min(30,v+d));S.gs=String(v);$('gs').value=S.gs}
  $('gm').onclick=function(){bump(-1)};$('gp').onclick=function(){bump(1)};
@@ -135,8 +151,8 @@ function render(){
   if(isNaN(d.getTime())||d.getTime()<Date.now()-60000)return er.textContent=t.e3;
   var pmx=(C.d&&C.p&&C.p.length)?C.p[+S.pm]:null,x=TYPE[S.sel],M=t.m;
   var when=t.days[d.getDay()]+' '+d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear()+' - '+pad(d.getHours())+':'+pad(d.getMinutes());
-  var msg=[M.h+' - '+(C.n||''),'',M.n+': '+n,M.p+': '+p,M.t+': '+tl(x),M.w+': '+when,M.d+': '+t.dur[+S.du],M.g+': '+(S.gs||'-')]
-   .concat(+x[2]?[M.c+': '+$('es').textContent]:[]).concat(C.d?[M.dp+': '+$('dp').textContent]:[]).concat(pmx?[M.pm+': '+pmx[0]+' ('+pmx[1]+')',M.pr]:[]).concat(S.nt.trim()?[M.nt+': '+S.nt.trim()]:[]).join('\n');
+  var msg=[M.h+' - '+(C.n||''),'',M.n+': '+n,M.p+': '+p,M.t+': '+tl(x)+(opts(x)&&opts(x)[S.v]?' - '+ol(opts(x)[S.v][0]):''),M.w+': '+when,M.d+': '+t.dur[+S.du],M.g+': '+(S.gs||'-')]
+   .concat(pr()?[M.c+': '+$('es').textContent]:[]).concat(C.d?[M.dp+': '+$('dp').textContent]:[]).concat(pmx?[M.pm+': '+pmx[0]+' ('+pmx[1]+')',M.pr]:[]).concat(S.nt.trim()?[M.nt+': '+S.nt.trim()]:[]).join('\n');
   location.href='https://wa.me/'+String(C.w).replace(/\D/g,'')+'?text='+encodeURIComponent(msg)};
 }
 render();
