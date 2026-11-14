@@ -64,6 +64,7 @@ header.hd .spw .spX{filter:drop-shadow(0 0 10px #f008)}
 @keyframes bsmIn{from{opacity:0}to{opacity:1}}
 @keyframes bsmOut{to{opacity:0;visibility:hidden}}
 @media (prefers-reduced-motion:reduce){#bsm{display:none}.spw img{animation:none!important;opacity:1;transform:none}.spw .spX{transform:none}}
+.soc{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:12px}.soc a{text-decoration:none;color:var(--tx);background:var(--pn2);border:1px solid var(--ln);border-radius:999px;padding:10px 18px;font-weight:700}.soc a:active{border-color:var(--ac)}
 .fbd{display:flex;justify-content:center;gap:6px;margin-bottom:8px}.fbd i{width:24px;height:5px;border-radius:3px;background:var(--ln)}.fbd i.on{background:var(--ac)}.fbd i.dn{background:var(--ok)}
 .fbh{margin:6px 0 10px;text-align:center;font-size:19px}.fbl{text-align:center;color:var(--mu);margin:12px 0 2px;font-size:15px}
 .fbb{display:block;margin:12px auto 0;background:none;border:0;color:var(--mu);text-decoration:underline}
@@ -90,14 +91,15 @@ const r2=x=>Math.round(x*100)/100;
 const TX={
  ar:{time:'الوقت',menu:'المنيو',bill:'الحساب',played:'الوقت المستخدم',left:'الوقت المتبقي',over:'وقت إضافي',open:'جلسة مفتوحة (بتتحسب بالوقت الفعلي)',timed:'جلسة بوقت محدد',min:'دقيقة',timeCost:'حساب الوقت',items:'الطلبات',disc:'الخصم',total:'الإجمالي',none:'لا توجد طلبات بعد',
   minNote:'الحد الأدنى للجلسة المفتوحة',cart:'السلة',cartT:'طلبك',send:'إرسال الطلب',back:'رجوع',note:'ملاحظات (اختياري)',pick:'اختار من المنيو',empty:'السلة فاضية',
-  sent:'✅ تم إرسال طلبك',sent2:'هيوصلك في أقرب وقت',again:'طلب جديد',fail:'تعذر إرسال الطلب، تأكد من الإنترنت وحاول تاني',ended:'انتهت الجلسة',ended2:'شكرًا لزيارتك ❤️',wait:'جاري تحميل بياناتك...',bad:'الرابط غير صحيح. امسح الـ QR من الإيصال مرة تانية.',cat:{Cafe:'المشروبات',Restaurant:'الأطعمة'},items2:'صنف',prepaid:'مدفوع مسبقًا',extra:'حساب الوقت الإضافي',noMenu:'المنيو مش متاح دلوقتي',lang:'English',sess:'جلستك',rate:'قيّم تجربتك',fbPh:'اكتب تعليقك (اختياري)',fbSend:'إرسال التقييم',fbThanks:'شكراً لتقييمك ❤️',fbPick:'اختار عدد النجوم الأول',rateSv:'قيّم الخدمة وفريق العمل',rateRm:'قيّم الغرفة',bookT:'عايز تحجز زيارتك الجاية؟',book:'احجز دلوقتي'},
+  sent:'✅ تم إرسال طلبك',sent2:'هيوصلك في أقرب وقت',again:'طلب جديد',fail:'تعذر إرسال الطلب، تأكد من الإنترنت وحاول تاني',ended:'انتهت الجلسة',ended2:'شكرًا لزيارتك ❤️',wait:'جاري تحميل بياناتك...',bad:'الرابط غير صحيح. امسح الـ QR من الإيصال مرة تانية.',cat:{Cafe:'المشروبات',Restaurant:'الأطعمة'},items2:'صنف',prepaid:'مدفوع مسبقًا',extra:'حساب الوقت الإضافي',noMenu:'المنيو مش متاح دلوقتي',lang:'English',sess:'جلستك',rate:'قيّم تجربتك',fbPh:'اكتب تعليقك (اختياري)',fbSend:'إرسال التقييم',fbThanks:'شكراً لتقييمك ❤️',fbPick:'اختار عدد النجوم الأول',rateSv:'قيّم الخدمة وفريق العمل',rateRm:'قيّم الغرفة',bookT:'عايز تحجز زيارتك الجاية؟',book:'احجز دلوقتي',socT:'تابعنا على السوشيال ميديا'},
  en:{time:'Time',menu:'Menu',bill:'Bill',played:'Time used',left:'Time left',over:'Overtime',open:'Open session (billed by actual time)',timed:'Timed session',min:'min',timeCost:'Time charge',items:'Orders',disc:'Discount',total:'Total',none:'No orders yet',
   minNote:'Open session minimum',cart:'Cart',cartT:'Your order',send:'Send order',back:'Back',note:'Notes (optional)',pick:'Pick from the menu',empty:'Cart is empty',
-  sent:'✅ Order sent',sent2:'It will reach you shortly',again:'New order',fail:'Could not send, check your internet and try again',ended:'Session ended',ended2:'Thank you for visiting ❤️',wait:'Loading your data...',bad:'Invalid link. Scan the receipt QR again.',cat:{Cafe:'Drinks',Restaurant:'Food'},items2:'items',prepaid:'Prepaid',extra:'Extra time charge',noMenu:'Menu not available right now',lang:'العربية',sess:'Your session',rate:'Rate your visit',fbPh:'Write a comment (optional)',fbSend:'Send feedback',fbThanks:'Thanks for your feedback ❤️',fbPick:'Please pick a star rating first',rateSv:'Rate the service and staff team',rateRm:'Rate the Room',bookT:'Want to book your next visit?',book:'Book now'}};
+  sent:'✅ Order sent',sent2:'It will reach you shortly',again:'New order',fail:'Could not send, check your internet and try again',ended:'Session ended',ended2:'Thank you for visiting ❤️',wait:'Loading your data...',bad:'Invalid link. Scan the receipt QR again.',cat:{Cafe:'Drinks',Restaurant:'Food'},items2:'items',prepaid:'Prepaid',extra:'Extra time charge',noMenu:'Menu not available right now',lang:'العربية',sess:'Your session',rate:'Rate your visit',fbPh:'Write a comment (optional)',fbSend:'Send feedback',fbThanks:'Thanks for your feedback ❤️',fbPick:'Please pick a star rating first',rateSv:'Rate the service and staff team',rateRm:'Rate the Room',bookT:'Want to book your next visit?',book:'Book now',socT:'Follow us on social media'}};
 let L=(()=>{try{return localStorage.getItem('fx_cust_lang')||'ar'}catch(e){return'ar'}})();
 const T=k=>TX[L][k];
 const KEY=((location.hash.match(/[#&]k=([a-z0-9]{8,40})/)||[])[1])||'';
 let BW=(()=>{try{return localStorage.getItem('fx_bw')||''}catch(e){return''}})(),ST=null,MN=null,ENDED=false,CART={},TAB=1,SKEW=0;
+let SO=(()=>{try{const j=JSON.parse(localStorage.getItem('fx_so')||'[]');return Array.isArray(j)?j:[]}catch(e){return[]}})();
 function setLang(l){L=l;try{localStorage.setItem('fx_cust_lang',l)}catch(e){}document.documentElement.lang=l;document.documentElement.dir=l=='ar'?'rtl':'ltr';
  $('#t1').textContent=T('sess');$('#t2').textContent=T('menu');$('#cartb').textContent=T('cart');$('#ct').textContent=T('cartT');$('#send').textContent=T('send');$('#back').textContent=T('back');$('#nt').placeholder=T('note');$('#okb').textContent=T('again');$('#lg').textContent=T('lang');drawMenu();draw();fbDraw()}
 function toggleLang(){setLang(L=='ar'?'en':'ar')}
@@ -110,7 +112,11 @@ function tAmt(s){const k=s.k||1;if(s.pre){const o=mins(s)-s.pre;return o>0?r2(Ma
  return r2(sg.reduce((a,x)=>a+x.m/60*x.r,0)+Math.max(0,B-sm)/60*s.r)}
 const hms=m=>{const s=Math.max(0,Math.floor(m*60));return[s/3600|0,s/60%60|0,s%60].map(x=>String(x).padStart(2,'0')).join(':')};
 const fm=(x,c)=>r2(x).toLocaleString(L=='ar'?'ar-EG':'en-US',{maximumFractionDigits:2})+' '+(c||(MN&&MN.cur)||'');
-function bkCard(){return /^https?:\/\//i.test(BW)?'<div class="card" style="text-align:center"><div style="font-size:18px;font-weight:700">'+T('bookT')+'</div><a class="bk" href="'+esc(BW)+'" target="_blank" rel="noopener">'+T('book')+'</a></div>':''}
+function bkCard(){return bkCard1()+soCard()}
+function bkCard1(){return /^https?:\/\//i.test(BW)?'<div class="card" style="text-align:center"><div style="font-size:18px;font-weight:700">'+T('bookT')+'</div><a class="bk" href="'+esc(BW)+'" target="_blank" rel="noopener">'+T('book')+'</a></div>':''}
+function soCard(){const N={fb:'Facebook',ig:'Instagram',tt:'TikTok'};
+ const l=(SO||[]).filter(x=>x&&/^https?:\/\//i.test(x[1]||'')).map(x=>'<a href="'+esc(x[1])+'" target="_blank" rel="noopener">'+esc(N[x[0]]||x[2]||'Link')+'</a>');
+ return l.length?'<div class="card" style="text-align:center"><div style="font-size:18px;font-weight:700">'+T('socT')+'</div><div class="soc">'+l.join('')+'</div></div>':''}
 function draw(){fbVis();
  const v=$('#v1');
  if(!KEY){v.innerHTML='<div class="card lbl">'+T('bad')+'</div>';return}
@@ -179,7 +185,7 @@ function connect(){
  es.onopen=()=>{$('#conn .dot').className='dot on'};
  es.onerror=()=>{$('#conn .dot').className='dot'};
  es.onmessage=ev=>{try{const m=JSON.parse(ev.data);if(m.event!='message')return;const o=JSON.parse(m.message);if(!o||!o.type)return;
-  if(o.type=='state'){ENDED=false;ST=o;if(typeof o.bw=='string'){BW=o.bw;try{localStorage.setItem('fx_bw',BW)}catch(e){}}draw()}
+  if(o.type=='state'){ENDED=false;ST=o;if(typeof o.bw=='string'){BW=o.bw;try{localStorage.setItem('fx_bw',BW)}catch(e){}}if(Array.isArray(o.so)){SO=o.so;try{localStorage.setItem('fx_so',JSON.stringify(SO))}catch(e){}}draw()}
   else if(o.type=='menu'){MN=o;drawMenu()}
   else if(o.type=='ended'){ENDED=true;draw();sumBar()}}catch(e){}}}
 fetch('menu-img.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&typeof j=='object'){Object.assign(IMG,j);drawMenu()}}).catch(()=>{});
