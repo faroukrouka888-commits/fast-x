@@ -143,8 +143,8 @@ footer{border-top:1px solid var(--ln);padding:24px 0 32px;color:var(--mu);font-s
    <label for="st"><span data-t="b_d">الجهاز / الغرفة</span><select id="st"></select></label>
    <label for="dt"><span data-t="b_dt">اليوم</span><input id="dt" type="date"></label>
    <label for="tm"><span data-t="b_tm">الساعة</span><input id="tm" type="time" value="18:00"></label>
-   <label for="hr"><span data-t="b_hr">عدد الساعات</span><select id="hr"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
-   <label for="pp"><span data-t="b_pp">عدد الأشخاص</span><input id="pp" type="number" min="1" max="12" value="2"></label>
+   <label for="hr"><span data-t="b_hr">عدد الساعات</span><input id="hr" type="number" min="1" max="24" step="0.5" value="1" inputmode="decimal"></label>
+   <label for="pp"><span data-t="b_pp">عدد الأشخاص</span><input id="pp" type="number" min="1" max="99" value="2"><small class="note" id="ppn" hidden></small></label>
    <div class="out">
     <div class="est"><span data-t="b_est">التكلفة التقريبية:</span> <b id="est"></b></div>
     <div class="dep" id="dep" hidden><div class="est"><span data-t="dp_t">العربون المطلوب لتأكيد الحجز:</span> <b id="dpa"></b></div><label for="pm" id="pml"><span data-t="dp_m">وسيلة دفع العربون</span><select id="pm"></select></label><div class="acc" id="pma"></div><p class="note" data-t="dp_n">الحجز مش بيتأكد إلا بعد تحويل العربون وإرسال صورة التحويل على واتساب.</p></div>
@@ -182,7 +182,7 @@ b_h:['احجز','Book'],b_s:['املا البيانات وابعت الحجز ع
 b_n:['الاسم','Name'],b_d:['الجهاز / الغرفة','Device / room'],b_dt:['اليوم','Date'],b_tm:['الساعة','Time'],b_hr:['عدد الساعات','Hours'],b_pp:['عدد الأشخاص','People'],
 b_est:['التكلفة التقريبية:','Estimated cost:'],b_send:['ابعت على واتساب','Send on WhatsApp'],b_cp:['انسخ الرسالة','Copy message'],
 b_note:['لو واتساب ما فتحش، انسخ الرسالة وابعتها على الرقم تحت.','If WhatsApp does not open, copy the message and send it to the number below.'],
-c_h:['تواصل معانا','Contact us'],c_s:['واتساب ومكالمات وفودافون كاش على نفس الرقم.','WhatsApp, calls and Vodafone Cash on the same number.'],c_n:['فودافون كاش / واتساب','Vodafone Cash / WhatsApp'],c_a:['العنوان','Address'],c_m:['افتح على الخريطة','Open in Maps'],c_hh:['ساعات العمل','Opening hours'],c_so:['تابعنا','Follow us'],wa_b:['كلمنا','Chat'],dp_t:['العربون المطلوب لتأكيد الحجز:','Deposit to confirm the booking:'],dp_m:['وسيلة دفع العربون','Deposit method'],dp_n:['الحجز مش بيتأكد إلا بعد تحويل العربون وإرسال صورة التحويل على واتساب.','Your booking is confirmed only after you pay the deposit and send us the transfer screenshot on WhatsApp.'],n5:['العروض','Offers'],n6:['الصور','Photos'],o_h:['العروض والباقات','Offers and packages'],o_s:['وفّر أكتر لما تحجز باقة.','Save more with a package.'],g_h:['المكان من جوّه','Inside the place'],g_s:['صور حقيقية من الغرف والكافيه.','Real photos of the rooms and the cafe.']};
+c_h:['تواصل معانا','Contact us'],c_s:['واتساب ومكالمات وفودافون كاش على نفس الرقم.','WhatsApp, calls and Vodafone Cash on the same number.'],c_n:['فودافون كاش / واتساب','Vodafone Cash / WhatsApp'],c_a:['العنوان','Address'],c_m:['افتح على الخريطة','Open in Maps'],c_hh:['ساعات العمل','Opening hours'],c_so:['تابعنا','Follow us'],wa_b:['كلمنا','Chat'],dp_t:['العربون المطلوب لتأكيد الحجز:','Deposit to confirm the booking:'],dp_m:['وسيلة دفع العربون','Deposit method'],dp_n:['الحجز مش بيتأكد إلا بعد تحويل العربون وإرسال صورة التحويل على واتساب.','Your booking is confirmed only after you pay the deposit and send us the transfer screenshot on WhatsApp.'],pp_x:['الحد الأقصى للأفراد في الغرفة دي:','Max people in this room:'],n5:['العروض','Offers'],n6:['الصور','Photos'],o_h:['العروض والباقات','Offers and packages'],o_s:['وفّر أكتر لما تحجز باقة.','Save more with a package.'],g_h:['المكان من جوّه','Inside the place'],g_s:['صور حقيقية من الغرف والكافيه.','Real photos of the rooms and the cafe.']};
 var ST=[['PS5 Room 1','غرفة PS5 رقم 1','PS5',80],['PS5 Room 2','غرفة PS5 رقم 2','PS5',80],['PS5 Room 3','غرفة PS5 رقم 3','PS5',80],
 ['8-Ball Table 1','طاولة بلياردو 1','Pool',60],['8-Ball Table 2','طاولة بلياردو 2','Pool',60],['Driving Sim 1','سيميوليتر القيادة 1','Sim',100],['Driving Sim 2','سيميوليتر القيادة 2','Sim',100],['Cinema Room','غرفة السينما','Cinema',200]];
 var TYPE={PS5:['بلايستيشن 5','PlayStation 5'],Pool:['بلياردو','Pool'],Sim:['محاكي قيادة','Racing'],Cinema:['سينما','Cinema']};
@@ -204,7 +204,7 @@ INFO.photos=[];
 /* حسابات: حط الرابط الكامل، والفاضي مش بيظهر */
 INFO.social={instagram:'',facebook:'',tiktok:''};
 if(DATA){
- if(DATA.st&&DATA.st.length)ST=DATA.st.map(function(x){return [x.n,x.n,x.t,+x.r||0]});
+ if(DATA.st&&DATA.st.length)ST=DATA.st.map(function(x){return [x.n,x.n,x.t,+x.r||0,+x.m||0]});
  if(DATA.items&&DATA.items.length){MI={Cafe:[],Restaurant:[]};DATA.items.forEach(function(x){MI[x.c=='Restaurant'?'Restaurant':'Cafe'].push([x.n,x.n,+x.p||0])})}
  if(DATA.cur&&DATA.cur!='EGP')T.egp=[DATA.cur,DATA.cur];
  var D=DATA.site||{};
@@ -249,7 +249,10 @@ function render(){
  upd();
 }
 function upd(){
- var s=ST[+$('st').value||0],h=+$('hr').value,tot=s[3]*h;
+ var s=ST[+$('st').value||0],h=Math.max(1,+$('hr').value||1),tot=s[3]*h;
+ var mx=+s[4]||0,pe=$('pp');
+ if(mx){pe.max=mx;if(+pe.value>mx)pe.value=mx}else pe.max=99;
+ $('ppn').hidden=!mx;if(mx)$('ppn').textContent=T.pp_x[L]+' '+fmt(mx);
  $('est').textContent=fmt(tot)+' '+T.egp[L];
  var m=L?('Hello Fast X, I would like to book:\nName: '+($('nm').value||'-')+'\nDevice: '+s[0]+'\nDate: '+($('dt').value||'-')+'\nTime: '+$('tm').value+'\nHours: '+h+'\nPeople: '+$('pp').value+'\nEstimated: '+tot+' EGP')
   :('أهلاً Fast X، عايز أحجز:\nالاسم: '+($('nm').value||'-')+'\nالجهاز: '+s[1]+'\nاليوم: '+($('dt').value||'-')+'\nالساعة: '+$('tm').value+'\nالساعات: '+h+'\nالأشخاص: '+$('pp').value+'\nالتكلفة التقريبية: '+tot+' ج.م');
@@ -263,6 +266,7 @@ $('lang').onclick=function(){L=L?0:1;render()};
 $('tc').onclick=function(){cat='Cafe';$('tc').setAttribute('aria-selected',true);$('tr').setAttribute('aria-selected',false);render()};
 $('tr').onclick=function(){cat='Restaurant';$('tr').setAttribute('aria-selected',true);$('tc').setAttribute('aria-selected',false);render()};
 ['nm','st','dt','tm','hr','pp','pm'].forEach(function(i){$(i).addEventListener('input',upd)});
+$('hr').addEventListener('change',function(){var v=+this.value;this.value=(v>=1&&v<=24)?v:(v>24?24:1);upd()});$('pp').addEventListener('change',function(){if(!(+this.value>=1))this.value=1;upd()});
 $('bf').addEventListener('submit',function(e){e.preventDefault()});
 $('cp').onclick=function(){var t=$('msg').textContent,b=$('cp');function ok(){var o=b.textContent;b.textContent=L?'Copied':'اتنسخت';setTimeout(function(){b.textContent=T.b_cp[L]},1500)}
  try{navigator.clipboard.writeText(t).then(ok,function(){var r=document.createRange();r.selectNodeContents($('msg'));var s=getSelection();s.removeAllRanges();s.addRange(r)})}catch(x){}};
