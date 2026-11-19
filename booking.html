@@ -27,6 +27,7 @@ h1{margin:0;text-align:center;font-size:20px}
 .ok{color:#22c55e}.due{color:#ff4d4d}
 .note{margin-top:16px;text-align:center;font-weight:700;font-size:15px}
 .snap{margin-top:8px;text-align:center;color:#888;font-size:12px}
+.soc{margin-top:18px;text-align:center}.soc .l{color:#9a9a9a;font-size:14px;font-weight:700;margin-bottom:10px}.soc .b{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}.soc a{text-decoration:none;color:#f4f4f4;background:#181818;border:1px solid #2c2c2c;border-radius:999px;padding:10px 18px;font-weight:700}.soc a:hover{border-color:#e10600}
 .err{text-align:center;padding:30px 10px;color:#ff6b6b;font-size:17px}
 </style>
 </head>
@@ -48,6 +49,7 @@ var T={
  keep:['احتفظ بالوصل واعرضه عند الحضور','Keep this receipt and show it on arrival'],
  snap:['البيانات كما في وقت إصدار الوصل: ','Details as of receipt time: '],
  bad:['الرابط غير صالح. اطلب وصل جديد من الكاشير.','This link is not valid. Please ask the cashier for a new receipt.'],
+ soc:['تابعنا على السوشيال ميديا','Follow us on social media'],
  sw:['English','عربي']
 };
 var lg=0,D=null;try{lg=(localStorage.getItem('bklang')||'ar')=='en'?1:0}catch(e){}
@@ -55,7 +57,7 @@ function t(k){return T[k][lg]}
 function dec(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return JSON.parse(decodeURIComponent(escape(atob(s))))}
 function load(){
   var m=/[#&]b=([^&]+)/.exec(location.hash||'');D=null;
-  if(m){try{var a=dec(m[1]);if(Array.isArray(a)&&a.length>=10)D={shop:String(a[0]),no:String(a[1]),room:String(a[2]),kind:String(a[3]),cust:String(a[4]),ts:+a[5],mins:+a[6],total:+a[7],paid:+a[8],cur:String(a[9]),pt:+a[10]||0};if(D&&!(isFinite(D.ts)&&isFinite(D.mins)&&isFinite(D.total)&&isFinite(D.paid)))D=null}catch(e){D=null}}
+  if(m){try{var a=dec(m[1]);if(Array.isArray(a)&&a.length>=10)D={shop:String(a[0]),no:String(a[1]),room:String(a[2]),kind:String(a[3]),cust:String(a[4]),ts:+a[5],mins:+a[6],total:+a[7],paid:+a[8],cur:String(a[9]),pt:+a[10]||0,so:Array.isArray(a[11])?a[11].slice(0,5):[]};if(D&&!(isFinite(D.ts)&&isFinite(D.mins)&&isFinite(D.total)&&isFinite(D.paid)))D=null}catch(e){D=null}}
 }
 function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
 function row(k,v,cls){var r=el('div','r');r.appendChild(el('span','',k));r.appendChild(el('b',cls||'',v));return r}
@@ -90,6 +92,8 @@ function render(){
   p.appendChild(r);c.appendChild(p);
   out.appendChild(c);
   out.appendChild(el('div','note',t('keep')));
+  var NM={fb:'Facebook',ig:'Instagram',tt:'TikTok'},sl=(D.so||[]).filter(function(x){return Array.isArray(x)&&/^https?:\/\//i.test(String(x[1]||''))});
+  if(sl.length){var sw=el('div','soc');sw.appendChild(el('div','l',t('soc')));var sb=el('div','b');sl.forEach(function(x){var a=el('a','',NM[x[0]]||String(x[2]||'Link'));a.href=String(x[1]);a.target='_blank';a.rel='noopener';sb.appendChild(a)});sw.appendChild(sb);out.appendChild(sw)}
   if(D.pt)out.appendChild(el('div','snap',t('snap')+new Date(D.pt).toLocaleString(loc,{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})));
 }
 document.getElementById('lang').onclick=function(){lg=lg?0:1;try{localStorage.setItem('bklang',lg?'en':'ar')}catch(e){}render()};
