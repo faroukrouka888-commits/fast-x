@@ -355,9 +355,17 @@ function rvDraw(){try{var s=$('reviews');if(!s)return;var o=RV;if(!o||!o.list||!
   a.style.cssText='color:#ffb547;letter-spacing:2px;margin-bottom:6px';a.textContent=new Array((+x[1]||5)+1).join('★');
   p.style.cssText='color:var(--fg);margin:0 0 8px';p.textContent=x[2];d.style.color='var(--mu)';d.textContent=new Date(x[0]).toLocaleDateString(L?'en-GB':'ar-EG');
   c.appendChild(a);c.appendChild(p);c.appendChild(d);g.appendChild(c)})}catch(e){}}
+/* live info: phone / WhatsApp booking number, map, address, hours, social and deposit + transfer numbers follow the cashier */
+function liApply(s){try{
+ if(s.phone)INFO.phone=s.phone;if(s.wa){INFO.wa=s.wa;P=s.wa}if(s.map)INFO.map=s.map;
+ if(s.addrA||s.addrE)INFO.addr=[s.addrA||s.addrE,s.addrE||s.addrA];
+ if(s.hrsA||s.hrsE)INFO.hours=[s.hrsA||s.hrsE,s.hrsE||s.hrsA];
+ INFO.social={instagram:s.ig||'',facebook:s.fb||'',tiktok:s.tt||''};
+ setDep(s.d,s.p);render()}catch(e){}}
 function rvLoad(){var tp=(typeof DATA!='undefined'&&DATA&&DATA.topic)||'';if(!tp||!window.fetch)return;
- fetch('https://ntfy.sh/'+encodeURIComponent(tp)+'/json?poll=1&since=12h').then(function(r){return r.text()}).then(function(tx){var best=null;
-  tx.split('\n').forEach(function(l){if(!l)return;try{var e=JSON.parse(l);if(e.event!='message'||!e.message)return;var o=JSON.parse(e.message);if(o&&o.k=='rv'&&o.list&&(!best||e.time>=best.t))best={t:e.time,o:o}}catch(x){}});
+ fetch('https://ntfy.sh/'+encodeURIComponent(tp)+'/json?poll=1&since=12h').then(function(r){return r.text()}).then(function(tx){var best=null,inf=null;
+  tx.split('\n').forEach(function(l){if(!l)return;try{var e=JSON.parse(l);if(e.event!='message'||!e.message)return;var o=JSON.parse(e.message);if(o&&o.k=='rv'&&o.list&&(!best||e.time>=best.t))best={t:e.time,o:o};if(o&&o.k=='info'&&o.site&&(!inf||e.time>=inf.t))inf={t:e.time,o:o.site}}catch(x){}});
+  if(inf)liApply(inf.o);
   if(best){RV={n:best.o.n,avg:best.o.avg,list:best.o.list};rvDraw()}}).catch(function(){})}
 rvLoad();
 function avBusy(s,t0,t1){
