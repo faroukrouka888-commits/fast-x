@@ -204,7 +204,12 @@ footer{border-top:1px solid var(--ln);padding:24px 0 32px;color:var(--mu);font-s
   </div>
  </section>
 
- <section id="contact">
+ <section id="reviews" hidden>
+ <h2 data-t="r_h">آراء عملائنا</h2>
+ <p class="sub" id="rvs"></p>
+ <div class="grid" id="rvg"></div>
+</section>
+<section id="contact">
   <h2 data-t="c_h">تواصل معانا</h2>
   <p class="sub" data-t="c_s">واتساب ومكالمات وفودافون كاش على نفس الرقم.</p>
   <div class="contact">
@@ -232,7 +237,7 @@ b_h:['احجز','Book'],b_s:['املا البيانات وابعت الحجز ع
 b_n:['الاسم','Name'],b_ph:['رقم التليفون','Phone number'],av_x:['(محجوز)','(booked)'],av_w:['الجهاز ده محجوز في الوقت اللي اخترته. اختار جهاز تاني أو ميعاد تاني.','This device is booked at the time you chose. Pick another device or time.'],av_f:['المتاح في نفس الوقت:','Free at that time:'],av_i:['الأجهزة المحجوزة في الوقت اللي اخترته بتظهر غير متاحة. آخر تحديث:','Devices already booked at your chosen time show as unavailable. Last update:'],cf_h:['تفاصيل حجزك','Your booking details'],cf_s:['طلب الحجز اتجهّز وواتساب اتفتح. لو الرسالة ما اتبعتتش، اضغط ابعت على واتساب تاني.','Your booking request is ready and WhatsApp should have opened. If the message was not sent, tap Send on WhatsApp again.'],cf_x:['إغلاق','Close'],b_phe:['لازم تكتب رقم تليفونك (١٠ أرقام على الأقل) عشان نأكد الحجز.','Please enter your phone number (at least 10 digits) so we can confirm the booking.'],b_d:['الجهاز / الغرفة','Device / room'],b_dt:['اليوم','Date'],b_tm:['الساعة','Time'],b_hr:['عدد الساعات','Hours'],b_pp:['عدد الأشخاص','People'],
 b_est:['التكلفة التقريبية:','Estimated cost:'],b_send:['ابعت على واتساب','Send on WhatsApp'],b_cp:['انسخ الرسالة','Copy message'],
 b_note:['لو واتساب ما فتحش، انسخ الرسالة وابعتها على الرقم تحت.','If WhatsApp does not open, copy the message and send it to the number below.'],
-c_h:['تواصل معانا','Contact us'],c_s:['واتساب ومكالمات وفودافون كاش على نفس الرقم.','WhatsApp, calls and Vodafone Cash on the same number.'],c_n:['فودافون كاش / واتساب','Vodafone Cash / WhatsApp'],c_a:['العنوان','Address'],c_m:['افتح على الخريطة','Open in Maps'],c_hh:['ساعات العمل','Opening hours'],c_so:['تابعنا','Follow us'],wa_b:['كلمنا','Chat'],dp_t:['العربون المطلوب لتأكيد الحجز:','Deposit to confirm the booking:'],dp_m:['وسيلة دفع العربون','Deposit method'],dp_n:['الحجز مش بيتأكد إلا بعد تحويل العربون وإرسال صورة التحويل على واتساب.','Your booking is confirmed only after you pay the deposit and send us the transfer screenshot on WhatsApp.'],pp_x:['الحد الأقصى للأفراد في الغرفة دي:','Max people in this room:'],n5:['العروض','Offers'],n6:['الصور','Photos'],o_h:['العروض والباقات','Offers and packages'],o_s:['وفّر أكتر لما تحجز باقة.','Save more with a package.'],g_h:['المكان من جوّه','Inside the place'],g_s:['صور حقيقية من الغرف والكافيه.','Real photos of the rooms and the cafe.']};
+r_h:['آراء عملائنا','What our guests say'],c_h:['تواصل معانا','Contact us'],c_s:['واتساب ومكالمات وفودافون كاش على نفس الرقم.','WhatsApp, calls and Vodafone Cash on the same number.'],c_n:['فودافون كاش / واتساب','Vodafone Cash / WhatsApp'],c_a:['العنوان','Address'],c_m:['افتح على الخريطة','Open in Maps'],c_hh:['ساعات العمل','Opening hours'],c_so:['تابعنا','Follow us'],wa_b:['كلمنا','Chat'],dp_t:['العربون المطلوب لتأكيد الحجز:','Deposit to confirm the booking:'],dp_m:['وسيلة دفع العربون','Deposit method'],dp_n:['الحجز مش بيتأكد إلا بعد تحويل العربون وإرسال صورة التحويل على واتساب.','Your booking is confirmed only after you pay the deposit and send us the transfer screenshot on WhatsApp.'],pp_x:['الحد الأقصى للأفراد في الغرفة دي:','Max people in this room:'],n5:['العروض','Offers'],n6:['الصور','Photos'],o_h:['العروض والباقات','Offers and packages'],o_s:['وفّر أكتر لما تحجز باقة.','Save more with a package.'],g_h:['المكان من جوّه','Inside the place'],g_s:['صور حقيقية من الغرف والكافيه.','Real photos of the rooms and the cafe.']};
 var ST=[['PS5 Room 1','غرفة PS5 رقم 1','PS5',80],['PS5 Room 2','غرفة PS5 رقم 2','PS5',80],['PS5 Room 3','غرفة PS5 رقم 3','PS5',80],
 ['8-Ball Table 1','طاولة بلياردو 1','Pool',60],['8-Ball Table 2','طاولة بلياردو 2','Pool',60],['Driving Sim 1','سيميوليتر القيادة 1','Sim',100],['Driving Sim 2','سيميوليتر القيادة 2','Sim',100],['Cinema Room','غرفة السينما','Cinema',200]];
 var TYPE={PS5:['بلايستيشن 5','PlayStation 5'],PSN:['بلايستيشن نورمال','PlayStation Normal'],Pool:['بلياردو','Pool'],Sim:['محاكي قيادة','Racing'],Cinema:['سينما','Cinema']};
@@ -329,7 +334,7 @@ function render(){
  $('st').innerHTML=ST.map(function(s,i){return s[2]=='Table'?'':'<option value="'+i+'">'+s[L?0:1]+' ('+fmt(s[3])+' '+T.egp[L]+')</option>'}).join('');
  if(cur)$('st').value=cur;
  $('gm').innerHTML=GAMES.map(function(g){return '<div class="card"><h3>'+T[g[0]][L]+'</h3><div class="chips">'+g[1].map(function(x){var n=typeof x=='string'?x:x[0],u=typeof x=='string'?'':x[1];return u?'<div class="gi"><img loading="lazy" alt="'+n+'" src="'+u+'"><span>'+n+'</span></div>':'<span class="chip">'+n+'</span>'}).join('')+'</div></div>'}).join('');
- $('cn').innerHTML=CINEMA.map(function(c){var lg=CL[c[1]];return lg?'<div class="ct" style="--c:'+c[2]+'"><img src="'+lg+'" alt="'+c[1]+'"><span>'+c[L?1:0]+'</span></div>':'<span class="chip pl" style="--c:'+c[2]+'">'+c[L?1:0]+'</span>'}).join('');extras();$('cph').textContent=INFO.phone;$('cmap').href=INFO.map;$('cad').textContent=INFO.addr[L];$('chr').textContent=INFO.hours[L];
+ $('cn').innerHTML=CINEMA.map(function(c){var lg=CL[c[1]];return lg?'<div class="ct" style="--c:'+c[2]+'"><img src="'+lg+'" alt="'+c[1]+'"><span>'+c[L?1:0]+'</span></div>':'<span class="chip pl" style="--c:'+c[2]+'">'+c[L?1:0]+'</span>'}).join('');extras();rvDraw();$('cph').textContent=INFO.phone;$('cmap').href=INFO.map;$('cad').textContent=INFO.addr[L];$('chr').textContent=INFO.hours[L];
  var pmE=$('pm'),pc=pmE.value;pmE.innerHTML='';PAY.forEach(function(x,i){var o=document.createElement('option');o.value=i;o.textContent=x[0];pmE.appendChild(o)});if(pc&&PAY[+pc])pmE.value=pc;
  upd();
 }
@@ -342,6 +347,19 @@ function avLoad(){
  fetch('https://ntfy.sh/'+encodeURIComponent(tp.replace(/-site$/,'-av'))+'/json?poll=1&since=3h').then(function(r){return r.text()}).then(function(tx){
   var best=null;tx.split('\n').forEach(function(l){if(!l)return;try{var e=JSON.parse(l);if(e.event!='message'||!e.message)return;var o=JSON.parse(e.message);if(o&&o.u&&o.g&&(!best||e.time>=best.t))best={t:e.time,o:o}}catch(x){}});
   AV=(best&&Date.now()-best.o.g*60000<108e5)?best:null;upd()}).catch(function(){})}
+/* reviews: snapshot in DATA.rv + live updates from the cashier on ntfy (topic ...-site, k:'rv') */
+var RV=(typeof DATA!='undefined'&&DATA&&DATA.rv)||null;
+function rvDraw(){try{var s=$('reviews');if(!s)return;var o=RV;if(!o||!o.list||!o.list.length){s.hidden=true;return}s.hidden=false;
+ var g=$('rvg');$('rvs').textContent=o.n>=5?'★ '+(+o.avg).toFixed(1)+' · '+o.n+' '+(L?'ratings':'تقييم'):'';g.innerHTML='';
+ o.list.forEach(function(x){var c=document.createElement('div'),a=document.createElement('div'),p=document.createElement('p'),d=document.createElement('small');c.className='card';
+  a.style.cssText='color:#ffb547;letter-spacing:2px;margin-bottom:6px';a.textContent=new Array((+x[1]||5)+1).join('★');
+  p.style.cssText='color:var(--fg);margin:0 0 8px';p.textContent=x[2];d.style.color='var(--mu)';d.textContent=new Date(x[0]).toLocaleDateString(L?'en-GB':'ar-EG');
+  c.appendChild(a);c.appendChild(p);c.appendChild(d);g.appendChild(c)})}catch(e){}}
+function rvLoad(){var tp=(typeof DATA!='undefined'&&DATA&&DATA.topic)||'';if(!tp||!window.fetch)return;
+ fetch('https://ntfy.sh/'+encodeURIComponent(tp)+'/json?poll=1&since=12h').then(function(r){return r.text()}).then(function(tx){var best=null;
+  tx.split('\n').forEach(function(l){if(!l)return;try{var e=JSON.parse(l);if(e.event!='message'||!e.message)return;var o=JSON.parse(e.message);if(o&&o.k=='rv'&&o.list&&(!best||e.time>=best.t))best={t:e.time,o:o}}catch(x){}});
+  if(best){RV={n:best.o.n,avg:best.o.avg,list:best.o.list};rvDraw()}}).catch(function(){})}
+rvLoad();
 function avBusy(s,t0,t1){
  var o=AV&&AV.o,a=o&&o.u&&o.u[s[2]];a=a&&a[s[0]];if(!a||!a.length)return false;
  var b=o.g*60000;if(t0>b+(+o.d||1)*864e5)return false;
