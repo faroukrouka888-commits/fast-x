@@ -130,7 +130,6 @@ footer{border-top:1px solid var(--ln);padding:24px 0 32px;color:var(--mu);font-s
    <div class="lg"><img id="hlogo" alt="Fast X Gaming Hub"></div>
    <h1 data-t="h1">العب. اشرب. <em>استمتع.</em></h1>
    <p class="lead" data-t="lead">غرف بلايستيشن 5، طاولات بلياردو، سيميوليتر قيادة وغرفة سينما، مع كافيه ومطعم في نفس المكان. احجز مكانك من الموقع في دقيقة.</p>
-   <p class="lead" id="fr" style="margin:0 0 14px;color:var(--ok);font-weight:800" hidden></p>
    <div class="cta"><a class="btn" id="dir" target="_blank" rel="noopener" data-t="c_m">كيف توصل</a><button class="btn" type="button" id="pbt" aria-haspopup="dialog" aria-expanded="false" data-t="pb">سعر الساعة</button><a class="btn p" href="#book" data-t="cta1">احجز دلوقتي</a><a class="btn" href="#menu" hidden data-t="cta2">شوف المنيو</a></div>
   </div>
   <div class="pbo" id="pbo" hidden><div class="board" id="pbx" role="dialog" aria-modal="true" aria-label="price board"><button type="button" class="pbc" id="pbcl" aria-label="close">×</button>
@@ -415,9 +414,6 @@ avLoad();setInterval(function(){if(!document.hidden)avLoad()},120000);
 </script>
 
 <script>(function(){var u=(INFO&&INFO.social)||{},t=document.getElementById('sft'),i=document.getElementById('sfi');if(u.tiktok){t.href=u.tiktok;t.hidden=false}if(u.instagram){i.href=u.instagram;i.hidden=false}if(u.tiktok||u.instagram)document.getElementById('sf').hidden=false})()</script>
-<script>(function(){var fr=document.getElementById('fr'),dr=document.getElementById('dir');dr.href=INFO.map;
-function cnt(){if(!AV){fr.hidden=true;return}var t0=Date.now(),t1=t0+9e5,n=0,tot=0;ST.forEach(function(s){if(s[2]=='Table')return;tot++;if(!avBusy(s,t0,t1))n++});
-fr.textContent=(L?n+' of '+tot+' devices free now':fmt(n)+' من '+fmt(tot)+' جهاز فاضي الآن');fr.hidden=false}
-var am=avMark;avMark=function(){am();cnt()};cnt();setInterval(cnt,6e4)})()</script>
+<script>(function(){var dr=document.getElementById('dir');dr.href=INFO.map})()</script>
 <script>(function(){var o=document.getElementById('pbo'),b=document.getElementById('pbt');function t(v){o.hidden=!v;b.setAttribute('aria-expanded',v)}b.onclick=function(){t(o.hidden)};document.getElementById('pbcl').onclick=function(){t(false)};o.onclick=function(e){if(e.target===o)t(false)};document.addEventListener('keydown',function(e){if(e.key=='Escape')t(false)})})()</script>
 </body></html>
